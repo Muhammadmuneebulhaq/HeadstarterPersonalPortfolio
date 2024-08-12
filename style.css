@@ -1,20 +1,26 @@
 body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background-color:aliceblue;
+  background-image: url('html_finalprojimages/backgrd.jpg'); /* Replace with the path to your image */
+  background-size: cover; /* This will ensure the image covers the entire container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
 }
 
 /* Navigation Bar */
 
 #home {
   background-color:  #7600bc;
-  padding-bottom: 1cm;
   margin-left:-1cm;
   margin-right:-1cm;
   margin-top:-1cm;
-  padding-top: 2cm;
-  padding-bottom: 2cm;
-  height: 5mm;
-
+  padding-top: 1.5cm;
+  padding-bottom: 1cm;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
  }
 
 .topmenu {
@@ -23,14 +29,14 @@ body {
   padding: 20px;
   font-size: 20px;
   text-decoration: none;
-  
+  transition: color 0.3s, font-weight 0.3s; 
+ 
 }
 
 .topmenu:hover {
   color: white;
-  font-weight: 100;
+  font-weight: 700;
   text-decoration: underline;
-  /* Add the styles here */
 }
 
 .topdiv {
@@ -38,51 +44,25 @@ body {
   padding-right: 1cm;
 }
 
-.profile_name {
-  float: left;
-  padding-left: 2cm;
-  color: aliceblue;
-  font-size: large;
-  /* Add the styles here */
-}
-
-.profile_name .contact_info {
-  font-size: 15px;
-  font-style: italic;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-}
-
-.contact_info img {
-  width:25px;
-  margin-right: 10px;
-  float:left;
-}
 
 /* Titles */
 
 h2 {
   text-align: justify;
-  font-size: 50px;
+  font-size: 48px;
   text-align: center;
   float: left;
   color: #7600bc;
-  margin: 30px;
-  margin-left: 60px;
-  margin-top: 40px;
-  margin-bottom: 0px;
+  margin: 20px
 }
 
 .introduction {
-  text-align: justify;
-  font-size: 30px;
-  text-align: center;
-  float: left;
-  margin-top: 30px;
-  margin-bottom: 20px;
+  font-size: 28px;
+  margin: 20px auto;
   animation-duration: 5s;
   position: relative;
+  clear: both;
+  width: 80%;
 }
 
 /* Used in the About Me sections */
@@ -91,16 +71,32 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 250px;
-  padding-right: 250px;
+  justify-content: center;
+  padding: 0 15%; /* Adjusted padding for better alignment */
+  height: 100vh;
+  
+}
+
+.aboutmeText{
+  width: 80%; /* Better text wrapping */
+  text-align: center;
+  
+  animation:
+    typing 2s steps(317),
+    cursor .4s step-end infinite alternate;
+}
+/* cursor blinking*/
+@keyframes cursor{
+  50%{border-color: transparent;}
+}
+/*  typing effect*/
+@keyframes typing{
+  from { width: 50%; height: 0%; }
+  to { width: 50%; height: 100%;}
 }
 
 /* About Me */
 
-.about-me {
-  display: flex;
-  align-items: center;
-}
 
 #about-me h1 {
   font-size: 65px;
@@ -110,7 +106,7 @@ h2 {
 
 #about-me p {
   font-size: 25px;
-  color: rgb(128, 128, 128);
+  color: black;
   margin-top: -1cm;
   text-align: center;
 }
@@ -128,44 +124,26 @@ h2 {
   display: flex;
   flex-direction: row;
   flex-flow: wrap;
+  margin-left: 7%;
+  justify-content: center;
 }
 
 .skill {
-  border: 0px solid gray;
-  display: flex; /* Use flexbox */
-  flex-direction: column; /* Arrange children in a column */
-  align-items: center; /* Center children horizontally */
-  justify-content: center; /* Center children vertically */
-  border-radius: 28px;
-  text-align: center;
-  margin: 50px;
-  padding: 10px;
-  width: 2in;
-  font-size: 32px;
+  width: 150px; /* Unified width */
+  padding: 20px;
+  margin: 20px;
+  font-size: 24px;
   background-color: #e8bcf0;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effects */
 }
 
 .skill img {
   height: 60px;
-  align-items: center;
+
   padding: 24px;
 }
-
-.skills h6 {
-  align-items: center;
-  font-size: 20px;
-  margin-block-start: 8px;
-  margin-block-end: 5px;
-  font-weight: bold;
-} 
-
-.skills p {
-  align-items: center;
-  font-size: 15px;
-  color: gray;
-  margin-block-start: 5px;
-  margin-block-end: 5px;
-} 
 
 .flex_center {
   display: flex;
@@ -173,24 +151,46 @@ h2 {
   justify-content: center;
 }
 
+.skill:hover {
+  transform: scale(1.25); /* Slight zoom on hover */
+  box-shadow:  5px 15px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
 /* Projects */
 
 .projects-container {
-  margin-top: 30px;
-  margin-left: 60px;
+  margin: 30px auto;
+  overflow: auto;
+  max-height: 600px; /* Increase height */
+  padding: 20px;
 }
 
 .projects-container hr {
   border: 1px solid lightgray;
   width: 75%;
-  margin-left: 5cm;
+  margin: 20px auto; /* Centered horizontally */
 }
 
 .project-card {
-  margin: 0 15px 15px 30px;
-  padding-bottom: 5px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Add shadow */
 }
 
+.project-data {
+  display: flex;
+  flex-direction: row;
+  gap: 10px; /* Space between project details */
+}
+
+.project-card h4 {
+  font-size: 20px;
+  margin-left: 20px;
+  background-color: #e8bcf0;
+  border-radius: 64px;
+  padding: 5px 15px;
+}
 .project-card h3 {
   font-size: 25px;
   margin-left: 30px;
@@ -204,79 +204,62 @@ h2 {
 /* reach out */
 .reach {
   display: flex;
-  flex-direction: row;
-  flex-flow: wrap;
-
+  flex-wrap: wrap;
+  justify-content: center; /* Center reach out items */
+  gap: 30px; /* Space between reach out items */
+  margin: 50px 0; /* Add some margin for spacing */
 }
 
 .link {
-  border: 0px solid gray;
-  display: flex; /* Use flexbox */
-  flex-direction: column; /* Arrange children in a column */
-  align-items: center; /* Center children horizontally */
-  justify-content: center; /* Center children vertically */
-  border-radius: 28px;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
   text-align: center;
-  margin: 50px;
-  padding: 10px;
-  width: 2in;
-  font-size: 32px;
+  margin: 20px;
+  padding: 20px;
+  width: 150px;
   background-color: #e8bcf0;
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
 
+.link:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow:  5px 15px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
 }
 
 .link img {
   height: 60px;
-  align-items: center;
-  padding: 24px;
-}
-
-.Rechout h6 {
-  align-items: center;
-  font-size: 20px;
-  margin-block-start: 8px;
-  margin-block-end: 5px;
-  font-weight: bold;
-} 
-
-.Reachout p {
-  align-items: center;
-  font-size: 15px;
-  color: gray;
-  margin-block-start: 5px;
-  margin-block-end: 5px;
-} 
-
-.flex_center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 15px; /* Space between image and text */
 }
 
 /* Recommendations */
 
 .all_recommendations {
   display: flex;
-  align-items: center;
-  margin-left: 1in;
   flex-direction: row;
-  flex-flow: wrap;
+  flex-wrap: wrap;
+  justify-content: center; /* Center recommendations */
   padding: 20px;
+  gap: 20px; /* Space between recommendation cards */
 }
 
 .recommendation {
   font-style: italic;
   text-align: left;
-  width: 21.875rem;
-  padding: 1rem;
-  background-color: #fff;
-  border-radius: 11px;
-  box-shadow: 0 3px 10px var(--primary-shadow);
+  width: 300px; /* Unified width */
   padding: 20px;
-  margin: 10px;
-  border:1px solid gray;
-  font-size: 18px;
-  height:150px
+  background-color: #fff;
+  border-radius: 15px;
+  margin: 20px;
+  border: 1px solid #ddd;
+  transition: box-shadow 0.3s; /* Smooth transition */
+}
+
+.recommendation:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow on hover */
 }
 
 .recommendation span {
@@ -287,10 +270,10 @@ h2 {
 
 /* Scroll to Top Button */
 
-.iconbutton{
+.iconbutton {
   width: 48px;
   height: 48px;
-  border-radius: 100%;
+  border-radius: 50%;
   background-color: #7600bc;
   display: flex;
   align-items: center;
@@ -299,69 +282,83 @@ h2 {
   right: 3%;
   bottom: 3%;
   cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
 }
 
+.iconbutton:hover {
+  transform: scale(1.1); /* Slightly larger on hover */
+  box-shadow: 5px 15px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
 /* Form Pop-up */
-
 .popup {
-  width:400px;
+  width: 400px;
   background-color: #e8bcf0;
-  border-radius: 3mm;
+  border-radius: 15px; /* Increase border radius for smoother corners */
   top: 50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
   position: fixed;
-  /* padding: 30px; */
+  padding: 30px; /* Restore padding for better content spacing */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
   visibility: hidden;
+  z-index: 10; /* Ensure popup is above other elements */
 }
 
 .popup img {
   padding-top: 20px;
+  width: 50px; /* Define a size for the image */
+  height: 50px;
 }
 
 .popup button {
-  background-color: #fff;
-  border: 1px solid #7600bc;
-  color: #7600bc;
-  display: block;
-  border-radius: 6px;
+  background-color: #7600bc;
+  border: none;
+  color: #fff;
+  border-radius: 20px; /* Rounder button corners */
   text-align: center;
-  margin: 50px;
-  padding: 10px;
-  width: 2in;
-  font-size: 20px;
-  margin-left: 25%;
+  margin: 30px auto; /* Center the button horizontally */
+  padding: 10px 20px;
+  font-size: 18px;
+  width: 150px; /* Set width of the button */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 .popup button:hover {
-  background-color: #fff;
-  border: 2px solid #7600bc;
-  color: #7600bc;
-  display: block;
-  font-weight: bolder;
-  text-align: center;
-  cursor: pointer;
-  margin-left: 25%;
+  background-color: #5a0096; /* Darker shade on hover */
 }
 
 /* Recommendation Form */
-
 input, textarea {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
-  margin: 10px;  
-  width:100%;
+  margin: 10px 0; /* Adjust margin for better spacing */
+  padding: 10px; /* Add padding for a better feel */
+  width: 100%;
+  border-radius: 8px; /* Rounded corners for inputs */
+  border: 1px solid #ddd; /* Subtle border */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  font-size: 16px;
 }
 
 fieldset {
-  display: flexbox;
-  align-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;  
-  padding: 25px; 
-  margin-left: 50px; 
-  margin-right: 50px;   
-  border: thin solid white;
-  width: 50%;
+  padding: 30px; 
+  margin: 0 auto; /* Center the fieldset */
+  border: 2px solid #7600bc; /* Bold border to match theme */
+  border-radius: 10px; /* Rounded corners */
+  width: 50%; /* Adjusted width for better alignment */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+}
+
+fieldset legend {
+  font-size: 24px;
+  color: #7600bc;
+  padding: 0 10px;
+  font-weight: bold;
 }
 
 /* Buttons */
@@ -372,19 +369,15 @@ button {
   display: block;
   border-radius: 16px;
   text-align: center;
-  margin: 50px;
-  padding: 10px;
-  width: 2in;
+  margin: 20px auto; /* Centered horizontally */
+  padding: 10px 20px; /* Adjusted padding */
   font-size: 20px;
-  box-shadow: none;
+  border: 1px solid #7600bc;
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
 }
 
 button:hover {
   background-color: #7600bc;
-  border: 1px solid #7600bc;
   color: #fff;
-  display: block;
-  border-radius: 16px;
-  text-align: center;
-  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
 }
